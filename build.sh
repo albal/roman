@@ -1,2 +1,2 @@
 #!/bin/bash
-rustc roman.rs
+rustc src/main.rs
