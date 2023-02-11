@@ -17,10 +17,10 @@ fn main() {
         }
     };
 
-    // if number > 3999 {
-    //     println!("Error: Number must be less than or equal to 3999.");
-    //     return;
-    // }
+    if number > 9999 {
+        println!("Error: Number must be less than or equal to 9999.");
+        return;
+    }
 
     let roman_numerals = vec![
         ("M", 1000),
@@ -49,4 +49,32 @@ fn main() {
     }
 
     println!("{} in Roman numerals is: {}", number, result);
+}
+
+#[cfg(test)]
+mod tests {
+    use assert_cmd::prelude::*;
+    use std::process::Command;
+
+    #[test]
+    fn test_valid_input() {
+        let input = "42";
+        let expected = "42 in Roman numerals is: XLII\n";
+
+        let mut cmd = Command::cargo_bin("roman").unwrap();
+        cmd.arg(input);
+
+        cmd.assert().success().stdout(expected);
+    }
+
+    #[test]
+    fn test_invalid_input() {
+        let input = "not_a_number";
+        let expected = format!("Error: {} is not a valid number.\n", input);
+
+        let mut cmd = Command::cargo_bin("roman").unwrap();
+        cmd.arg(input);
+
+        cmd.assert().success().stdout(expected);
+    }
 }
