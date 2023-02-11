@@ -29,3 +29,7 @@ jobs:
       with:
         name: roman
         path: roman.tar.gz
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: roman.tag.gz
