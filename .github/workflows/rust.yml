@@ -32,4 +32,5 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        files: roman.tag.gz
+        tag_name: roman
+        files: roman.tar.gz
