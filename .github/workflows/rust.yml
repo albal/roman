@@ -34,3 +34,5 @@ jobs:
       with:
         tag_name: roman
         files: roman.tar.gz
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
