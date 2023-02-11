@@ -17,9 +17,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: cargo build --release
+      run: cargo build
     - name: Run tests
       run: cargo test 
+    - name: Build
+      run: cargo build --release
     - name: Package artifact
       run: tar -czvf roman.tar.gz target/release/roman
     - name: Upload artifact
